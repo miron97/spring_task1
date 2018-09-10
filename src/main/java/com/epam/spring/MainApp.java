@@ -18,7 +18,7 @@ public class MainApp {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Enter name of horse for bet, you can write name of horse, name of rider or breed\n");
+            System.out.println("Enter name of horse for bet, you can write name of horse or name of rider\n");
             if (betService.placeBet(sc.nextLine())) break;
         }
 
