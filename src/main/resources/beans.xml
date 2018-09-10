@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="rider" class="com.epam.spring.domain.Rider" scope="prototype" init-method="init"></bean>
+    <bean id="breed" class="com.epam.spring.domain.Breed" scope="prototype" init-method="init"></bean>
+
+    <bean id="race" class="com.epam.spring.domain.Race" init-method="init"/>
+
+    <bean id="horseService" class="com.epam.spring.service.HorseService">
+        <property name="horseData" ref="horseData"/>
+    </bean>
+
+    <bean id="raceService" class="com.epam.spring.service.RaceService">
+        <property name="horseService" ref="horseService"/>
+        <property name="race" ref="race"/>
+    </bean>
+
+    <bean id="emulationService" class="com.epam.spring.service.EmulationService">
+        <property name="raceService" ref="raceService"/>
+    </bean>
+
+    <bean id="betService" class="com.epam.spring.service.BetService">
+        <property name="raceService" ref="raceService"/>
+    </bean>
+
+    <bean id="horseData" class="com.epam.spring.data.HorseData">
+        <property name="horses">
+            <list>
+                <bean id="horse" class="com.epam.spring.domain.Horse" init-method="init">
+                    <property name="name" value="Elida"/>
+                    <property name="rider" ref="rider"/>
+                    <property name="breed" ref="breed"/>
+                </bean>
+                <bean id="horse" class="com.epam.spring.domain.Horse" init-method="init">
+                    <property name="name" value="Cofone"/>
+                    <property name="rider" ref="rider"/>
+                    <property name="breed" ref="breed"/>
+                </bean>
+                <bean id="horse" class="com.epam.spring.domain.Horse" init-method="init">
+                    <property name="name" value="Diomede"/>
+                    <property name="rider" ref="rider"/>
+                    <property name="breed" ref="breed"/>
+                </bean>
+                <bean id="horse" class="com.epam.spring.domain.Horse" init-method="init">
+                    <property name="name" value="Giovanni"/>
+                    <property name="rider" ref="rider"/>
+                    <property name="breed" ref="breed"/>
+                </bean>
+                <bean id="horse" class="com.epam.spring.domain.Horse" init-method="init">
+                    <property name="name" value="Bavier"/>
+                    <property name="rider" ref="rider"/>
+                    <property name="breed" ref="breed"/>
+                </bean>
+                <bean id="horse" class="com.epam.spring.domain.Horse" init-method="init">
+                    <property name="name" value="Enriquez"/>
+                    <property name="rider" ref="rider"/>
+                    <property name="breed" ref="breed"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+
+</beans>
