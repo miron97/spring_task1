@@ -7,9 +7,9 @@ import java.util.Random;
 public class Rider {
     private String name;
 
-    private List<String> riders;
+    private static List<String> riders;
 
-    public void init() {
+    static {
         riders = new ArrayList<>();
         riders.add("John");
         riders.add("Matthew");
@@ -17,8 +17,10 @@ public class Rider {
         riders.add("Thomas");
         riders.add("Josef");
         riders.add("Rio");
+    }
 
-        this.name = riders.get(new Random().nextInt(riders.size()));
+    public void init() {
+        this.name = riders.remove(new Random().nextInt(riders.size()));
     }
 
     /**

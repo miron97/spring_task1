@@ -1,7 +1,9 @@
 package com.epam.spring;
 
+import com.epam.spring.config.AppContext;
 import com.epam.spring.service.BetService;
 import com.epam.spring.service.EmulationService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -9,10 +11,10 @@ import java.util.Scanner;
 
 public class MainApp {
     public static void main(String[] args) {
-        AbstractApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppContext.class);
 
-        EmulationService emulationService = (EmulationService) context.getBean("emulationService");
-        BetService betService = (BetService) context.getBean("betService");
+        EmulationService emulationService = context.getBean(EmulationService.class);
+        BetService betService = context.getBean(BetService.class);
         System.out.println(emulationService.getRaceService().getRaceInfo());
 
         Scanner sc = new Scanner(System.in);

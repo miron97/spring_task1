@@ -7,9 +7,9 @@ import java.util.Random;
 public class Breed {
     private String name;
 
-    private List<String> breeds;
+    private static List<String> breeds;
 
-    public void init() {
+    static {
         breeds = new ArrayList<>();
         breeds.add("Abyssinian");
         breeds.add("Brandenburger");
@@ -17,8 +17,10 @@ public class Breed {
         breeds.add("Kafa");
         breeds.add("Oldenburger");
         breeds.add("Tsushima");
+    }
 
-        this.name = breeds.get(new Random().nextInt(breeds.size()));
+    public void init() {
+        this.name = breeds.remove(new Random().nextInt(breeds.size()));
     }
 
     /**

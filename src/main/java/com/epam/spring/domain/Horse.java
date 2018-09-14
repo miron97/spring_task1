@@ -1,5 +1,7 @@
 package com.epam.spring.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -8,8 +10,21 @@ public class Horse {
     private Rider rider;
     private Breed breed;
     private int speed;
+    private static List<String> horseNames;
+
+    static {
+        horseNames = new ArrayList<>();
+        horseNames.add("Elida");
+        horseNames.add("Giovanni");
+        horseNames.add("Cofone");
+        horseNames.add("Diomede");
+        horseNames.add("Bavier");
+        horseNames.add("Enriquez");
+    }
+
 
     public void init () {
+        this.name = horseNames.remove(new Random().nextInt(horseNames.size()));
         this.speed = 10 + new Random().nextInt(10);
     }
 
